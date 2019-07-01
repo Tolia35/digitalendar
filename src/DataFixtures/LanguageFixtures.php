@@ -21,9 +21,9 @@ class LanguageFixtures extends Fixture
         $this->setReference("language-English", $language2);
 
         $language3 = new Language();
-        $language3->setName("German");
+        $language3->setName("Deutsch");
         $manager->persist($language3);
-        $this->setReference("language-German", $language3);
+        $this->setReference("language-Deutsch", $language3);
 
         $manager->flush();
     }
