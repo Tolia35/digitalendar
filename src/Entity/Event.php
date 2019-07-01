@@ -61,7 +61,7 @@ class Event
     /**
      * @ORM\Column(type="boolean")
      */
-    private $is_valid;
+    private $is_valid = false;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\city")
