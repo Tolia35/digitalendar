@@ -26,7 +26,7 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
         $event1 = new Event();
         $event1->setTitle("West Web Festival");
         $event1->setSlug($this->slugger->slugify($event1->getTitle()));
-        $event1->setPicture(null);
+        $event1->setPicture("wwf");
         $event1->setCity($this->getReference("city-Rennes"));
         $event1->addLanguage($this->getReference("language-French"));
         $event1->setDescription("Lorem ipsum... ");
@@ -40,9 +40,9 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
         $this->setReference("event1",$event1);
 
         $event2 = new Event();
-        $event2->setTitle("Open Source Summit");
+        $event2->setTitle("Gen");
         $event2->setSlug($this->slugger->slugify($event1->getTitle()));
-        $event2->setPicture(null);
+        $event2->setPicture("gen");
         $event2->setCity($this->getReference("city-Rennes"));
         $event2->addLanguage($this->getReference("language-English"));
         $event2->setDescription("Lorem ipsum... ");
@@ -56,9 +56,9 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
         $this->setReference("event2",$event2);
 
         $event3 = new Event();
-        $event3->setTitle("Big Data Paris");
+        $event3->setTitle("Lengow");
         $event3->setSlug($this->slugger->slugify($event1->getTitle()));
-        $event3->setPicture(null);
+        $event3->setPicture("lengow");
         $event3->setCity($this->getReference("city-Paris"));
         $event3->addLanguage($this->getReference("language-French"));
         $event3->addLanguage($this->getReference("language-English"));
