@@ -33,7 +33,7 @@ class CityFixtures extends Fixture
         $city5 = new City();
         $city5->setName("Paris");
         $manager->persist($city5);
-        $this->setReference("Paris", $city5);
+        $this->setReference("city-Paris", $city5);
 
         $manager->flush();
     }
