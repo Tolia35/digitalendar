@@ -84,8 +84,8 @@ class EventFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            CityFixtures::class,
             UserFixtures::class,
+            CityFixtures::class,
             LanguageFixtures::class
         ];
     }
