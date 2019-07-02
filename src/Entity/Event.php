@@ -109,6 +109,11 @@ class Event
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
     public function getSlug(): ?string
     {
         return $this->slug;
