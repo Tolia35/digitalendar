@@ -5,9 +5,10 @@ namespace App\DataFixtures;
 use App\Entity\Event;
 use App\Entity\Participant;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class ParticipantFixtures extends Fixture
+class ParticipantFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -33,7 +34,7 @@ class ParticipantFixtures extends Fixture
         $this->setReference("Participant3", $participant3);
 
         $participant4 = new Participant();
-        $participant4->setCreatedAt(new \DateTime("2017-03--23"));
+        $participant4->setCreatedAt(new \DateTime("2017-03-23"));
         $participant4->setUser($this->getReference("utilisateur4"));
         $participant4->setEvent($this->getReference("event2"));
         $manager->persist($participant4);
@@ -54,5 +55,19 @@ class ParticipantFixtures extends Fixture
         $this->setReference("Participant6", $participant6);
 
         $manager->flush();
+    }
+
+    /**
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on
+     *
+     * @return array
+     */
+    public function getDependencies()
+    {
+        return [
+            EventFixtures::class,
+            UserFixtures::class
+        ];
     }
 }

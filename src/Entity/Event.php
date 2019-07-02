@@ -61,7 +61,7 @@ class Event
     /**
      * @ORM\Column(type="boolean")
      */
-    private $is_valid = false;
+    private $is_valid ;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\city")
@@ -198,7 +198,7 @@ class Event
         return $this->is_valid;
     }
 
-    public function setIsValid(bool $is_valid): self
+    public function setIsValid(bool $is_valid = false): self
     {
         $this->is_valid = $is_valid;
 
