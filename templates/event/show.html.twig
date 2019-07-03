@@ -9,15 +9,11 @@
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ event.id }}</td>
+                <td>{{ event.slug }}</td>
             </tr>
             <tr>
                 <th>Titre</th>
                 <td>{{ event.title }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ event.slug }}</td>
             </tr>
             <tr>
                 <th>Image</th>
@@ -52,7 +48,7 @@
 
     <a href="{{ path('event_index') }}">retour à la liste des évènements</a>
 
-    <a href="{{ path('event_edit', {'id': event.id}) }}">Modifier</a>
+    <a href="{{ path('event_edit', {'slug': event.slug}) }}">Modifier</a>
 
     {{ include('event/_delete_form.html.twig') }}
 {% endblock %}
