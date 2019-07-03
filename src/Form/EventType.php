@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Event;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,16 +15,18 @@ class EventType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('picture')
+            ->add('picture', FileType::class, [
+                'mapped'=> false,
+                'required'=> false
+            ])
             ->add('description')
-            ->add('date_start')
-            ->add('date_end')
+            ->add('language')
+            ->add('city')
+            ->add('dateStart', DateType::class)
+            ->add('dateEnd', DateType::class)
             ->add('url')
             ->add('price')
-            ->add('is_valid')
-            ->add('city')
             ->add('user')
-            ->add('language')
         ;
     }
 
