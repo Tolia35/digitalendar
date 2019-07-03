@@ -6,6 +6,7 @@ use App\Entity\Event;
 use App\Form\EventType;
 use App\Repository\EventRepository;
 use App\Service\Slugger;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,6 +30,7 @@ class EventController extends AbstractController
 
     /**
      * @Route("/new", name="event_new", methods={"GET","POST"})
+     * 0@IsGranted("ROLE_USER")
      */
     public function new(Request $request,Slugger $slugger): Response
     {
@@ -39,19 +41,19 @@ class EventController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             /** @var UploadedFile $pictureFile */
-            $pictureFile = $form["picture"]->getData();
+            $pictureFile = $form["pictureFile"]->getData();
 
             if ($pictureFile)
             {
                 $fileName = uniqid() . "." . $pictureFile->guessExtension();
 
-                $pictureFile->move($this->getParameter("uploads_dir"),$fileName);
-
+                $pictureFile->move($this->getParameter("upload_dir"),$fileName);
                 $event->setPicture($fileName);
             }
-            $event->setSlug($slugger->slugify($event->getTitle()));
-            $event->setUser($this->getUser());
 
+
+            $event->setSlug($this->$slugger->slugify($event->getTitle()));
+            $event->setUser($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($event);
             $entityManager->flush();
@@ -77,6 +79,7 @@ class EventController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="event_edit", methods={"GET","POST"})
+     * 0@IsGranted("ROLE_USER")
      */
     public function edit(Request $request, Event $event): Response
     {
@@ -99,6 +102,7 @@ class EventController extends AbstractController
 
     /**
      * @Route("/{id}", name="event_delete", methods={"DELETE"})
+     * 0@IsGranted("ROLE_USER")
      */
     public function delete(Request $request, Event $event): Response
     {

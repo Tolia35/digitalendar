@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Event index{% endblock %}
+{% block title %}Liste des évènements{% endblock %}
 
 {% block body %}
-    <h1>Event index</h1>
+    <h1>Liste des évènements</h1>
 
     <table class="table">
         <thead>
@@ -35,8 +35,8 @@
                 <td>{{ event.price }}</td>
                 <td>{{ event.isValid ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('event_show', {'id': event.id}) }}">show</a>
-                    <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
+                    <a href="{{ path('event_show', {'id': event.id}) }}">Voir plus</a>
+                    <a href="{{ path('event_edit', {'id': event.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -47,5 +47,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('event_new') }}">Create new</a>
+    <a href="{{ path('event_new') }}">Ajouter un évènement</a>
 {% endblock %}

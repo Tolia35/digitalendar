@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Event{% endblock %}
+{% block title %}Evènements{% endblock %}
 
 {% block body %}
-    <h1>Event</h1>
+    <h1>Evènements</h1>
 
     <table class="table">
         <tbody>
@@ -12,7 +12,7 @@
                 <td>{{ event.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>Titre</th>
                 <td>{{ event.title }}</td>
             </tr>
             <tr>
@@ -20,7 +20,7 @@
                 <td>{{ event.slug }}</td>
             </tr>
             <tr>
-                <th>Picture</th>
+                <th>Image</th>
                 <td>{{ event.picture }}</td>
             </tr>
             <tr>
@@ -28,19 +28,19 @@
                 <td>{{ event.description }}</td>
             </tr>
             <tr>
-                <th>Date_start</th>
+                <th>Date début</th>
                 <td>{{ event.dateStart ? event.dateStart|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Date_end</th>
+                <th>Date fin</th>
                 <td>{{ event.dateEnd ? event.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Url</th>
+                <th>Site web</th>
                 <td>{{ event.url }}</td>
             </tr>
             <tr>
-                <th>Price</th>
+                <th>Prix</th>
                 <td>{{ event.price }}</td>
             </tr>
             <tr>
@@ -50,9 +50,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('event_index') }}">back to list</a>
+    <a href="{{ path('event_index') }}">retour à la liste des évènements</a>
 
-    <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
+    <a href="{{ path('event_edit', {'id': event.id}) }}">Modifier</a>
 
     {{ include('event/_delete_form.html.twig') }}
 {% endblock %}

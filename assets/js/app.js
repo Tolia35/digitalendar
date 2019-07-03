@@ -1,4 +1,4 @@
-import  'tinymce/themes/modern/theme';
+
 /*
  * Welcome to your app's main JavaScript file!
  *
