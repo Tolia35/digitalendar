@@ -26,9 +26,9 @@ class CityFixtures extends Fixture
         $this->setReference("city-Laval", $city3);
 
         $city4 = new City();
-        $city4->setName("Noyal_Chatillon_sur_seiche");
+        $city4->setName("Noyal");
         $manager->persist($city4);
-        $this->setReference("city-Noyal_Chatillon_sur_seiche", $city4);
+        $this->setReference("city-Noyal", $city4);
 
         $city5 = new City();
         $city5->setName("Paris");

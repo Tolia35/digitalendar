@@ -52,8 +52,9 @@ class EventController extends AbstractController
             }
 
 
-            $event->setSlug($this->$slugger->slugify($event->getTitle()));
+            $event->setSlug($slugger->slugify($event->getTitle()));
             $event->setUser($this->getUser());
+            $event->setIsValid(false);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($event);
             $entityManager->flush();
@@ -69,6 +70,7 @@ class EventController extends AbstractController
 
     /**
      * @Route("/{id}", name="event_show", methods={"GET"})
+     * 0@IsGranted("ROLE_USER")
      */
     public function show(Event $event): Response
     {
