@@ -4,7 +4,7 @@
     <h1>Event</h1>
     <div class="row">
         <div class="col-md-4">
-            <img src="{{ asset('uploads/' ~ event.picture) }}" alt="events-picture" width="300px">
+            <img src="{{ asset('uploads/' ~ event.picture) }}" alt="{{ event.title }}" width="300px">
         </div>
         <div class="col-md-8">
             <h1>{{ event.title }}</h1>

@@ -73,4 +73,5 @@ class Participant
 
         return $this;
     }
+
 }
