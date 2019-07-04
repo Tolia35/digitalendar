@@ -13,9 +13,7 @@ const $ = require('jquery');
 require("popper.js");
 require("bootstrap");
 require("select2");
-require("tinymce");
-
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+const ClassicEditor =  require("@ckeditor/ckeditor5-build-classic");
 
 $(document).ready(function() {
 
@@ -23,5 +21,7 @@ $(document).ready(function() {
     $('select').select2();
 
     $('[data-toggle="tooltip"]').tooltip();
+
+    ClassicEditor.create( document.querySelector( 'textarea' ) );
 
 });

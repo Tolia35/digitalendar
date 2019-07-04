@@ -13,10 +13,8 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
-        $events = $this->getDoctrine()->getRepository(Event::class)->findAfterNow();
-
         return $this->render('default/homepage.html.twig', [
-            'events' => $events,
+            'controller_name' => 'DefaultController',
         ]);
     }
 
