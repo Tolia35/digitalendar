@@ -151,4 +151,5 @@ class EventController extends AbstractController
             'slug' => $event->getSlug(),
         ]);
     }
+
 }

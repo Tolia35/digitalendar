@@ -19,7 +19,7 @@
             <span class="badge badge-pill badge-secondary" data-toggle="tooltip" data-placement="top"
                   title="Participants">
                         <i class="fa fa-users"></i>
-                        16
+                        {{ event.participants | length }}
                     </span>
             <a href="{{ event.url }}" target="_blank" class="badge badge-pill badge-primary" data-toggle="tooltip"
                data-placement="top" title="Site web">
@@ -34,7 +34,7 @@
                 {% endif %}
                     </span>
             <p>{{ event.description}}</p>
-            <a href="#" class="btn btn-primary btn-lg">Je participe</a>
+            <a href="{{ path('event_add_participant', {'slug': event.slug }) }}" class="btn btn-primary btn-lg">Je participe</a>
         </div>
     </div>
 {% endblock %}
