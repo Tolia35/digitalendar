@@ -19,6 +19,27 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
+    /**
+     * @param int $limit
+     * @return Event[]
+     * @throws \Exception
+     */
+    public function findAfterNow(int $limit = 3): array
+    {
+        $today = new \DateTime();
+
+        $qb = $this->createQueryBuilder('cqb');
+
+        return $qb->andWhere($qb->expr()->gte('cqb.date_start', ':today'))
+            ->setParameter('today', $today)
+            ->orderBy('cqb.date_start', 'ASC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
     // /**
     //  * @return Event[] Returns an array of Event objects
     //  */
@@ -48,3 +69,4 @@ class EventRepository extends ServiceEntityRepository
     }
     */
 }
+

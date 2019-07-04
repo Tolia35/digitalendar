@@ -6,26 +6,23 @@ use App\Entity\Event;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class DefaultController extends AbstractController
+class AccountController extends AbstractController
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/account", name="account")
      */
     public function index()
     {
-        $events = $this->getDoctrine()->getRepository(Event::class)->findAfterNow();
-
-        return $this->render('default/homepage.html.twig', [
-            'events' => $events,
+        return $this->render('account/account.html.twig', [
+            'controller_name' => 'AccountController',
         ]);
     }
-
     public function Event()
     {
         $event = $this->getDoctrine()->getRepository(Event::class)->findAll();
 
-        return $this->render("default/_event.html.twig",[
+        return $this->render("account/_event.html.twig",[
             "event"=> $event
-            ]);
+        ]);
     }
 }
