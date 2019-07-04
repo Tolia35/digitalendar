@@ -1,54 +1,40 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Evènements{% endblock %}
-
+{% block title %}Event{% endblock %}
 {% block body %}
-    <h1>Evènements</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ event.slug }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ event.title }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ event.picture }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ event.description }}</td>
-            </tr>
-            <tr>
-                <th>Date début</th>
-                <td>{{ event.dateStart ? event.dateStart|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Date fin</th>
-                <td>{{ event.dateEnd ? event.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Site web</th>
-                <td>{{ event.url }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ event.price }}</td>
-            </tr>
-            <tr>
-                <th>Is_valid</th>
-                <td>{{ event.isValid ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('event_index') }}">retour à la liste des évènements</a>
-
-    <a href="{{ path('event_edit', {'slug': event.slug}) }}">Modifier</a>
-
-    {{ include('event/_delete_form.html.twig') }}
+    <h1>Event</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{ asset('uploads/' ~ event.picture) }}" alt="events-picture" width="300px">
+        </div>
+        <div class="col-md-8">
+            <h1>{{ event.title }}</h1>
+            <span class="badge badge-pill badge-secondary" data-toggle="tooltip" data-placement="top" title="Ville">
+                        <i class="fa fa-map-pin"></i>
+                        {{ event.city }}
+                    </span>
+            <span class="badge badge-pill badge-secondary" data-toggle="tooltip" data-placement="top" title="Dates">
+                        <i class="fa fa-calendar"></i>
+                        {{ event.dateStart|date('d') ~ '-' ~ event.dateEnd|date('d/m/Y')}}
+                    </span>
+            <span class="badge badge-pill badge-secondary" data-toggle="tooltip" data-placement="top"
+                  title="Participants">
+                        <i class="fa fa-users"></i>
+                        16
+                    </span>
+            <a href="{{ event.url }}" target="_blank" class="badge badge-pill badge-primary" data-toggle="tooltip"
+               data-placement="top" title="Site web">
+                <i class="fa fa-globe"> Site Web</i>
+            </a>
+            <span class="badge badge-pill badge-secondary" data-toggle="tooltip" data-placement="top" title="Prix">
+                {% if event.price == 0 %}
+                    Gratuit
+                {% else %}
+                    <i class="fa fa-euro"></i>
+                    {{ event.price }}
+                {% endif %}
+                    </span>
+            <p>{{ event.description}}</p>
+            <a href="#" class="btn btn-primary btn-lg">Je participe</a>
+        </div>
+    </div>
 {% endblock %}
