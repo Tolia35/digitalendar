@@ -33,8 +33,18 @@
                     {{ event.price }}
                 {% endif %}
                     </span>
+            <span class="badge badge-pill badge-secondary" data-toggle="tooltip" data-placement="top" title="Langue">
+                {% for language in event.language %}
+                    {{ language.name }}
+                {% endfor %}
+                    </span>
             <p>{{ event.description}}</p>
+
+            {% if app.user %}
             <a href="{{ path('event_add_participant', {'slug': event.slug }) }}" class="btn btn-primary btn-lg">Je participe</a>
+                {% else %}
+                    <a href="{{ path('app_login', {'slug': event.slug }) }}" class="btn btn-primary btn-lg">Connectez vous pour participer</a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

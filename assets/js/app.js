@@ -13,7 +13,7 @@ const $ = require('jquery');
 require("popper.js");
 require("bootstrap");
 require("select2");
-const ClassicEditor =  require("@ckeditor/ckeditor5-build-classic");
+//const ClassicEditor =  require("@ckeditor/ckeditor5-build-classic");
 
 $(document).ready(function() {
 
@@ -22,6 +22,6 @@ $(document).ready(function() {
 
     $('[data-toggle="tooltip"]').tooltip();
 
-    ClassicEditor.create( document.querySelector( 'textarea' ) );
+    //ClassicEditor.create( document.querySelector( 'textarea' ) );
 
 });
