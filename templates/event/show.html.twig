@@ -14,7 +14,7 @@
                     </span>
             <span class="badge badge-pill badge-secondary" data-toggle="tooltip" data-placement="top" title="Dates">
                         <i class="fa fa-calendar"></i>
-                        {{ event.dateStart|date('d') ~ '-' ~ event.dateEnd|date('d/m/Y')}}
+                        {{ event.dateStart|date('d') ~ '-' ~ event.dateEnd|date('d/m/Y') }}
                     </span>
             <span class="badge badge-pill badge-secondary" data-toggle="tooltip" data-placement="top"
                   title="Participants">
@@ -38,12 +38,20 @@
                     {{ language.name }}
                 {% endfor %}
                     </span>
-            <p>{{ event.description}}</p>
+            <p>{{ event.description }}</p>
+
 
             {% if app.user %}
-            <a href="{{ path('event_add_participant', {'slug': event.slug }) }}" class="btn btn-primary btn-lg">Je participe</a>
+                {% if not participant %}
+                    <a href="{{ path('event_add_participant', {'slug': event.slug }) }}" class="btn btn-primary btn-lg">Je
+                        participe</a>
                 {% else %}
-                    <a href="{{ path('app_login', {'slug': event.slug }) }}" class="btn btn-primary btn-lg">Connectez vous pour participer</a>
+                    <a href="{{ path('event_add_participant', {'slug': event.slug }) }}" class="btn btn-primary btn-lg">Je
+                        ne participe plus </a>
+                {% endif %}
+            {% else %}
+                <a href="{{ path('app_login', {'slug': event.slug }) }}" class="btn btn-primary btn-lg">Connectez vous
+                    pour participer</a>
             {% endif %}
         </div>
     </div>
